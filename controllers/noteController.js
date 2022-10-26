@@ -1,5 +1,5 @@
 const { response } = require("express");
-const {Note} = require("../model/model");
+const {Note, User} = require("../model/model");
 
 const noteController = {
     // ADD note
@@ -31,16 +31,18 @@ const noteController = {
             const notes = await Note.findById(req.params.id);
             res.status(200).json(notes);
         } catch (error) {
-            res.status(500).json("thís is a error");
+            res.status(500).json(error);
         }
     },
 
     //update note
     updateNote: async(req, res) =>{
         try{
-            const newNote = new Note(req.body);
-            const saveNote = await newNote.save();
-            res.status(200).json(saveNote);
+            const rs = await Note.updateOne({_id: req.params.id},{$set: {
+                title: req.body.title,
+                content: req.body.content
+            }})
+            res.status(200).json(rs);
         }
         catch (error){
             res.status(500).json(error);
