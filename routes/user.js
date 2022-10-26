@@ -2,23 +2,22 @@ const userController = require("../controllers/userController");
 
 const router = require("express").Router();
 
-//ADD NOTE
+//ADD USER
 router.post("/", userController.addUser);
 
-//GET ALL NOTE
+//GET ALL USER
 router.get("/", userController.getAllUser);
 
+// GET USER BY EMAIL AND PASSWORD
 router.get("/login", userController.login);
-
-//router.get("/findByEmail", userController.getUserByEmail);
 
 //GET BY ID
 router.get("/:id", userController.getUserById);
 
-//DELETE NOTE
+//DELETE USER
 router.delete("/:id", userController.deleteAUser);
 
-// Update note
+// Update USER
 router.put("/:id", userController.updateUser) ;
 
 

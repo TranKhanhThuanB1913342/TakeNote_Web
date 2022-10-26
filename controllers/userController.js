@@ -60,6 +60,7 @@ const UserController = {
         }
     },
 
+    // LOGIN (GET USER BY EMAIL AND PASSWORD)
     login: async (req, res) => {
         try {
             var email = req.body.email;
@@ -69,6 +70,7 @@ const UserController = {
                 email: email, 
                 password: password
             });
+            console.log(res);
             res.status(200).json(haha);
         } catch (error) {
             res.status(500).json(error);
