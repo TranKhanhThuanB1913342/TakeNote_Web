@@ -60,15 +60,20 @@ const UserController = {
         }
     },
 
-    getUserByEmail: async (req, res) => {
-        res.status(200).json("get user bt email")
-        // try {
-        //     const a = await User.find({email: req.body.email}, function(err,obj) { console.log(obj); });
-        //     res.status(200).json(a);
-
-        // } catch (error) {
-        //     res.status(500).json(error);
-        // }
+    login: async (req, res) => {
+        try {
+            var email = req.body.email;
+            var password = req.body.password;
+    
+            const haha = await User.findOne({
+                email: email, 
+                password: password
+            });
+            res.status(200).json(haha);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+        
     }
 }
 
