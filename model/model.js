@@ -38,6 +38,10 @@ const noteSchema = new mongoose.Schema({
         type: String
     },
 
+    user: {
+        type: mongoose.Schema.Types.ObjectId
+    }
+
     // images: {
     //     type: [String] // link to image
     // }

@@ -8,7 +8,7 @@ router.post("/", userController.addUser);
 //GET ALL USER
 router.get("/", userController.getAllUser);
 
-// GET USER BY EMAIL AND PASSWORD
+// LOGIN (GET USER BY EMAIL AND PASSWORD)
 router.get("/login", userController.login);
 
 //GET BY ID

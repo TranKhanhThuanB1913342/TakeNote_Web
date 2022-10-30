@@ -4,10 +4,14 @@ const {Note, User} = require("../model/model");
 const noteController = {
     // ADD note
     addNote: async(req, res) => {
-        console.log("add note");
         try {
             const newNote = new Note(req.body);
             const saveNote = await newNote.save();
+            if(req.body.user){
+                const user = User.findById(req.body.user);
+                await user.updateOne({$push: {notes: saveNote._id}});
+            }
+
             res.status(200).json(saveNote);
         } catch (error) {
             res.status(500).json(error);
@@ -53,14 +57,17 @@ const noteController = {
     deleteANote: async(req, res) => {
         console.log("delete note");
         try {
+            await User.updateMany(
+                {notes: req.params.id}, 
+                {$pull:{notes: req.params.id}}
+            );
             await Note.findByIdAndDelete(req.params.id);
+            
             res.status(200).json("delete successfully <3");
         } catch (error) {
             res.status(500).json(error);
         }
     },
-
-    
 }
 
 module.exports = noteController;

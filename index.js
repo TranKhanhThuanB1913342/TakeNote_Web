@@ -10,7 +10,7 @@ const userRoute = require("./routes/user");
 
 dotenv.config();
 // connect database
-mongoose.connect(process.env.MONGODB_URL, () =>
+mongoose.connect(process.env.MONGODB_URL, () => 
 console.log("Connected to mongoDB"));
 
 

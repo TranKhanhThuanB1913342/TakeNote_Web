@@ -53,6 +53,9 @@ const UserController = {
     deleteAUser: async(req, res) => {
         console.log("delete User");
         try {
+            await Note.deleteMany(
+                {user: req.params.id}
+            );
             await User.findByIdAndDelete(req.params.id);
             res.status(200).json("delete successfully <3");
         } catch (error) {
@@ -65,12 +68,12 @@ const UserController = {
         try {
             var email = req.body.email;
             var password = req.body.password;
-    
+            console.log(email + " : " + password);
             const haha = await User.findOne({
                 email: email, 
                 password: password
             });
-            console.log(res);
+            console.log(haha);
             res.status(200).json(haha);
         } catch (error) {
             res.status(500).json(error);
