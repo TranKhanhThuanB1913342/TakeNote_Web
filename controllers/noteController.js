@@ -44,7 +44,9 @@ const noteController = {
         try{
             const rs = await Note.updateOne({_id: req.params.id},{$set: {
                 title: req.body.title,
-                content: req.body.content
+                content: req.body.content,
+                skin: req.body.skin,
+                listImage: req.body.listImage
             }})
             res.status(200).json(rs);
         }
@@ -68,6 +70,12 @@ const noteController = {
             res.status(500).json(error);
         }
     },
+
+    //get All Note Of User
+    getAllNoteOfUser: async(req, res) => {
+        var user = await Note.find({user: req.params.id});
+        res.status(200).json(user);
+    }
 }
 
 module.exports = noteController;

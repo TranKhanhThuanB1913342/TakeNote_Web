@@ -11,6 +11,9 @@ router.get("/", userController.getAllUser);
 // LOGIN (GET USER BY EMAIL AND PASSWORD)
 router.get("/login", userController.login);
 
+// FIND MY EMAIL
+router.get("/findByEmail", userController.findByEmail);
+
 //GET BY ID
 router.get("/:id", userController.getUserById);
 

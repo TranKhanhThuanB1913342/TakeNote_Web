@@ -6,45 +6,41 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
     password:{
         type: String,
         require: true
     },
-
     name:{
         type: String,
         require: true
     },
-
-    notes:[
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Note"
-        }
-    ]
+    notes:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Note"
+    }]
 })
 
-// Note
 const User = mongoose.model("User", userSchema);
 
+// Note
 const noteSchema = new mongoose.Schema({
     title:{
         type: String,
         required: true
     },
-
     content:{
         type: String
     },
-
+    skin: {
+        type: String,
+    },
+    listImage: [{
+        type: String,
+    }],
     user: {
-        type: mongoose.Schema.Types.ObjectId
-    }
-
-    // images: {
-    //     type: [String] // link to image
-    // }
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
 })
 
 

@@ -14,7 +14,10 @@ router.get("/:id", noteController.getNoteById);
 //DELETE NOTE
 router.delete("/:id", noteController.deleteANote);
 
-// Update note
+// UPDATE NOTE
 router.put("/:id", noteController.updateNote) ;
+
+//GET ALL NOTE OF USER
+router.get("/getnotesbyuserid/:id", noteController.getAllNoteOfUser);
 
 module.exports = router;

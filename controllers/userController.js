@@ -78,7 +78,19 @@ const UserController = {
         } catch (error) {
             res.status(500).json(error);
         }
-        
+    },
+
+    findByEmail: async (req, res) => {
+        try {
+            var email = req.body.email;
+            const haha = await User.findOne({
+                email: email, 
+            });
+            console.log(haha);
+            res.status(200).json(haha);
+        } catch (error) {
+            res.status(500).json(error);
+        }
     }
 }
 
